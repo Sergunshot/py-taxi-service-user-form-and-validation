@@ -65,7 +65,7 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
 
 
 @login_required()
-def assign_driver(request, pk):
+def assign_driver(request: HttpRequest, pk: int) -> HttpResponseRedirect:
     driver = Driver.objects.get(pk=request.user.id)
 
     if Car.objects.get(pk=pk) in driver.cars.all():
